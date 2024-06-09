@@ -5,13 +5,13 @@ const txtscore = document.getElementById("score");
 const btnReset = document.getElementById("btnReset");
 let larguraContainer = container.offsetWidth; //offsetWidth = pega o valor da largura atual da caixa
 let alturaContainer = container.offsetHeight; // offsetHeight = pega o valor da altura atual da caixa
+let musica = new Audio("musica.mp3");
+musica.play();
 let score = 0;
 let minutos = 0;
 let segundos = 59;
 let game = true;
 let som = new Audio("tiro.mp3");
-let musica = new Audio("musica.mp3");
-musica.play()
 let fim = new Audio("win.mp3");
 fim.currentTime = 0;
 let rodar = 500;
