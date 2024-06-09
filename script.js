@@ -1,3 +1,7 @@
+
+let musica = new Audio("game.mp3");
+musica.currentTime = 0;
+
 const container = document.getElementById("container");
 const txtTime = document.getElementById("time");
 const popup = document.getElementById("dialog");
@@ -11,14 +15,13 @@ let segundos = 59;
 let game = true;
 let som = new Audio("tiro.mp3");
 let fim = new Audio("win.mp3");
-let musica = new Audio("game.mp3");
-
 fim.currentTime = 0;
 //Cronometro
 const timer = setInterval((evt) => {
-  musica.play();
+
   txtTime.innerHTML = `${minutos}:${segundos}`;
   criarAlvos();
+  musica.play();
   if (segundos > 0) {
     segundos--;
     segundos = segundos < 10 ? "0" + segundos : segundos;
@@ -88,3 +91,4 @@ criarAlvos = () => {
 btnReset.addEventListener("click", (evt) => {
   window.location.reload();
 });
+
