@@ -1,0 +1,84 @@
+@charset "UTF-8";
+*{
+    border: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+html,body{
+    width: 100%;
+    height: 100%;
+}
+
+body{
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: relative;
+}
+
+div.timer{
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    border: 2px solid black;
+    position: absolute;
+    top: 100px;
+    border-radius: 5px;
+    color: white;
+    background: gray;
+}
+
+p{
+    font-size: 2rem;
+}
+
+.alvo{
+    background: url(imagens/alvo.png);
+    background-position: center center;
+    background-size: cover;
+    transform-origin: center center;
+    position: absolute;
+}
+.container{
+    width: 100%;
+    min-height: 90%;
+    min-height: fill-available;
+    overflow: hidden;
+    position: relative;
+}
+
+div.popup{
+    width: calc(80% - 20px);
+    height: calc(80% - 20px);
+    background-color: transparent;
+    border-radius: 10px;
+    border: 2px solid black;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    backdrop-filter: blur(15px);
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.21);
+}
+
+div.popup > p#score{
+    font-size: 3rem;
+}
+
+button{
+    border: 5px solid black;
+    border-radius: 5px;
+    padding: 5px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
