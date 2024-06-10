@@ -14,14 +14,14 @@ const btnReset = document.getElementById("btnReset");
 let larguraContainer = container.offsetWidth; //offsetWidth = pega o valor da largura atual da caixa
 let alturaContainer = container.offsetHeight; // offsetHeight = pega o valor da altura atual da caixa
 let score = 0;
-let minutos =  0;
+let minutos = 0;
 let segundos = 59;
 let game = true;
 let som = new Audio("tiro.mp3");
 let fim = new Audio("win.mp3");
 let velo; //velocidade da criação de alvos
 fim.currentTime = 0;
-
+let dificuldade;
 const playMusica = setInterval((evt) => {
   musica.play();
   if (segundos == 0 && minutos == 0) {
@@ -31,7 +31,7 @@ const playMusica = setInterval((evt) => {
 }, velo);
 
 //Cronometro
-const iniciar = (velo)=>{
+const iniciar = (velo) => {
   const timer = setInterval((evt) => {
 
     txtTime.innerHTML = `${minutos}:${segundos}`;
@@ -46,7 +46,6 @@ const iniciar = (velo)=>{
     } else if (segundos == 0 && minutos == 0) {
       popup.style.display = "flex";
       txtscore.innerHTML = `Score: ${score}`;
-
       fim.play();
       clearInterval(timer);
     }
@@ -122,18 +121,32 @@ class AlvoErro {
 }
 
 criarAlvos = () => {
-  const alvoErro = new AlvoErro(container);
-  const alvo = new Alvo(container);
+  let escolha = Math.floor((Math.random() * dificuldade) + 1);
+  if (escolha < dificuldade) {
+    const alvo = new Alvo(container);
+    const alvoContainer = document.getElementById(alvo.id);
+    alvoContainer.addEventListener("click", (evt) => {
+      som.play();
+      score += 10;
+      alvo.remove();
+    });
+    som.pause();
+    som.currentTime = 0;
+  } else {
+    const alvoErro = new AlvoErro(container);
+    const alvoContainer = document.getElementById(alvoErro.id);
+    alvoContainer.addEventListener("click", (evt) => {
+      som.play();
+      alvoErro.remove();
+      popup.style.display = "flex";
+      txtscore.innerHTML = "Você perdeu!!!!"
+      clearInterval(timer);
+    });
+    som.pause();
+    som.currentTime = 0;
+  }
+}
 
-  const alvoContainer = document.getElementById(alvo.id);
-  alvoContainer.addEventListener("click", (evt) => {
-    som.play();
-    score += 10;
-    alvo.remove();
-  });
-  som.pause();
-  som.currentTime = 0;
-};
 
 btnReset.addEventListener("click", (evt) => {
   window.location.reload();
@@ -141,24 +154,27 @@ btnReset.addEventListener("click", (evt) => {
 
 //Configurar dificuldade do game
 
-btnFacil.addEventListener("click",(evt)=>{
+btnFacil.addEventListener("click", (evt) => {
   minutos = 1;
   segundos = 59;
   velo = 1000;
   menu.style.display = "none";
+  dificuldade = 10;
   iniciar(velo);
 });
-btnMedio.addEventListener("click",(evt)=>{
+btnMedio.addEventListener("click", (evt) => {
   minutos = 0;
   segundos = 59;
   velo = 500;
   menu.style.display = "none";
+  dificuldade = 5;
   iniciar(velo);
 });
-btnDificil.addEventListener("click",(evt)=>{
+btnDificil.addEventListener("click", (evt) => {
   minutos = 0;
   segundos = 30;
   velo = 250;
   menu.style.display = "none";
+  dificuldade = 2;
   iniciar(velo);
 });
