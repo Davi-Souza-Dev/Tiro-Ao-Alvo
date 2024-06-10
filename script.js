@@ -29,6 +29,7 @@ const playMusica = setInterval((evt) => {
     clearInterval(playMusica);
   }
 }, velo);
+
 //Cronometro
 const iniciar = (velo)=>{
   const timer = setInterval((evt) => {
