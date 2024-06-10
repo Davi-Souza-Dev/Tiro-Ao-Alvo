@@ -53,7 +53,6 @@ const iniciar = (velo)=>{
   }, velo);
 }
 
-
 //Caso a caixa seja redimensionada
 window.addEventListener("resize", (evt) => {
   larguraContainer = container.offsetWidth; //offsetWidth = pega o valor da largura atual da caixa
@@ -91,7 +90,39 @@ class Alvo {
   };
 }
 
+//Classe do alvo
+class AlvoErro {
+  constructor(container) {
+    //Definindo propriedades básicas
+    this.tam = Math.floor(Math.random() * 250) + 50;
+    this.X = Math.floor(Math.random() * (larguraContainer - this.tam));
+    this.Y = Math.floor(Math.random() * (alturaContainer - this.tam));
+    this.id = Date.now() + "_" + Math.floor(Math.random() * 10000);
+    this.box = container;
+    //Criando o objeto ao instanciar
+    this.desenhar();
+    this.me = document.getElementById(`${this.id}`);
+    //Remover após 3 segundos.
+  }
+
+  desenhar = () => {
+    const div = document.createElement("div");
+    div.setAttribute("class", "alvoErro");
+    div.setAttribute("id", this.id);
+    div.setAttribute(
+      "style",
+      `top:${this.Y}px;left:${this.X}px;width:${this.tam}px;height:${this.tam}px`
+    );
+    this.box.appendChild(div);
+  };
+
+  remove = () => {
+    this.me.remove();
+  };
+}
+
 criarAlvos = () => {
+  const alvoErro = new AlvoErro(container);
   const alvo = new Alvo(container);
 
   const alvoContainer = document.getElementById(alvo.id);

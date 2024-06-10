@@ -42,6 +42,13 @@ p{
     transform-origin: center center;
     position: absolute;
 }
+.alvoErro{
+    background: url(imagens/alvoErro.png);
+    background-position: center center;
+    background-size: cover;
+    transform-origin: center center;
+    position: absolute;
+}
 .container{
     width: 100%;
     min-height: 90%;
