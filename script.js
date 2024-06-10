@@ -70,7 +70,10 @@ class Alvo {
     //Criando o objeto ao instanciar
     this.desenhar();
     this.me = document.getElementById(`${this.id}`);
-    //Remover após 3 segundos.
+    //Remover após 1 segundos.
+    let sumir = setInterval(()=>{
+      this.remove();
+    },1000)    
   }
 
   desenhar = () => {
@@ -102,6 +105,9 @@ class AlvoErro {
     this.desenhar();
     this.me = document.getElementById(`${this.id}`);
     //Remover após 3 segundos.
+    let sumir = setInterval(()=>{
+      this.remove();
+    },3000)    
   }
 
   desenhar = () => {
