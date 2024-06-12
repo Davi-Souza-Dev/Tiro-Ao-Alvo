@@ -16,9 +16,53 @@ body{
     align-items: flex-end;
     justify-content: center;
     position: relative;
+    /* background: url(imagens/fundo.jpg), linear-gradient(to top, rgba(255, 255, 255, 0.411),transparent);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center; */
+    min-height: 100%;
+    width: 100%;
+    min-height: fill-available;
+    z-index: 0;
+    background:#fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
+/* Configurando o pattern de grid animado */
+#hex-grid{
+  width: 100vw;
+  height: 100vh;
+  background: #fff;
+  position: absolute;
+}
 
+#hexGrid > .grid{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: url(imagens/grid.svg);
+  background-repeat: repeat;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background-size: 500px;
+  z-index: 0;
+}
+
+#hexGrid > .light{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 15em;
+  height: 15em;
+  filter: blur(15px);
+  background: linear-gradient(90deg, #335bf4 0%, #2ae9c9 100% );
+  z-index: 0;
+}
 div.timer{
     padding: 10px;
     display: flex;
@@ -30,10 +74,12 @@ div.timer{
     border-radius: 5px;
     color: white;
     background: gray;
+    z-index: 10;
 }
 
 p{
     font-size: 2rem;
+    z-index: 10;
 }
 
 .alvo{
@@ -43,6 +89,7 @@ p{
     transform-origin: center center;
     position: absolute;
     animation: girar 1s infinite linear alternate-reverse;
+    z-index: 100;
 }
 @keyframes girar {
     0%{
@@ -68,12 +115,30 @@ p{
     position: absolute;
     animation: girar 1s infinite linear ;
 }
+.pts{
+  font-size: 3rem;
+  padding: 10px;
+  position: absolute;
+}
+
 .container{
     width: 100%;
-    min-height: 90%;
-    min-height: fill-available;
+    min-height: 80%;
+    /* min-height: fill-available; */
     overflow: hidden;
     position: relative;
+    z-index: 0;
+}
+
+@media screen and (min-width:800px) {
+  .container{
+    width: 80%;
+    min-height: 80%;
+    /* min-height: fill-available; */
+    overflow: hidden;
+    position: relative;
+    z-index: 0;
+}
 }
 
 div.popup{
@@ -92,11 +157,12 @@ div.popup{
     transform: translate(-50%,-50%);
     backdrop-filter: blur(15px);
     z-index: 1000;
-    background: rgba(255, 255, 255, 0.21);
+    overflow: hidden;
 }
 
 div.popup > p#score{
     font-size: 3rem;
+    z-index: 1;
 }
 
 /* button{
@@ -121,6 +187,7 @@ button {
     border: none;
     color: #fff;
     margin: 5px;
+    z-index: 1;
   }
   
   button:hover {
@@ -212,5 +279,22 @@ button {
   
   button#btnMedio i::after {
     border: 2px solid rgb(229, 255, 0);
+  }
+
+  button#btnInfinito:hover {
+    letter-spacing: 0.25em;
+    background: #ff1867;
+    color: #ff1867;
+    box-shadow: 0 0 45px ;
+  }
+
+  button#btnInfinito i::before {
+    border: 2px solid #ff1867;
+    width: 20%
+  }
+  
+  button#btnInfinito i::after {
+    border: 2px solid #ff1867;
+    width: 20%
   }
 

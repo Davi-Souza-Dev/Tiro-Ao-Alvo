@@ -1,38 +1,36 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Tiro ao alvo</title>
-</head>
-<body> 
-    <div class="popup" id="menu" style="display:flex">
-        <h1>Bem vindo</h1>
-        <p>Escolha a dificuldade</p>
-        <button id="btnFacil">
-            <span>FÁCIL</span><i></i>
-        </button>
-        <button id="btnMedio">
-            <span>MÉDIO</span><i></i>
-        </button>
-        <button id="btnDificil">
-            <span>DÍFICIL</span><i></i>
-        </button>
+  </head>
+  <body>
+    <div id="hexGrid" >
+        <div class="light" id="luz"></div>
+        <div class="grid"></div>
+      </div>
+      <script src="script/background.js"></script>
+    <div class="popup" id="menu" style="display: flex">
+      <h1>Bem vindo</h1>
+      <p>Escolha a dificuldade</p>
+      <button id="btnFacil"><span>FÁCIL</span><i></i></button>
+      <button id="btnMedio"><span>MÉDIO</span><i></i></button>
+      <button id="btnDificil"><span>DÍFICIL</span><i></i></button>
+      <button id="btnInfinito"><span>INFÍNITO</span><i></i></button>
     </div>
     <div class="popup" id="dialog">
-        <p>Fim de jogo</p>
-        <p id="score">Pontuação: 0000</p>
-        <button id="btnReset">
-            <span>RESETAR</span><i></i>
-        </button>
+      <p>Fim de jogo</p>
+      <p id="score">Pontuação: 0000</p>
+      <button id="btnReset"><span>RESETAR</span><i></i></button>
     </div>
     <div class="timer">
-        <p id="time">00:00</p>
+      <p id="time">00:00</p>
     </div>
     <div class="container" id="container">
     </div>
     <audio src="musica.mp3" id="audio"></audio>
-    <script src="script.js"></script>
-</body>
+    <script src="script/script.js"></script>
+  </body>
 </html>
